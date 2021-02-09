@@ -1,0 +1,6 @@
+# IDEA Project
+.idea
+
+# Drivers Directory
+drivers/chromedriver
+drivers/geckodriver
