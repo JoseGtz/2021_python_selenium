@@ -2,8 +2,8 @@
 .idea
 
 # Drivers Directory
-drivers/chromedriver.exe
-drivers/geckodriver.exe
+drivers/chromedriver
+drivers/geckodriver
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
