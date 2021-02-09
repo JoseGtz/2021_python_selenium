@@ -1,3 +1,10 @@
+# IDEA Project
+.idea
+
+# Drivers Directory
+drivers/chromedriver.exe
+drivers/geckodriver.exe
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
