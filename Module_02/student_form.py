@@ -2,39 +2,48 @@ from common.webdriver_factory import get_driver
 from selenium.webdriver.support.ui import Select
 
 driver = get_driver('chrome')
-driver.get('https://formsmarts.com/html-form-example')
-driver.switch_to.frame(driver.find_element_by_class_name('fs_embed'))
+driver.implicitly_wait(5)
+driver.get('https://formsmarts.com/form/axi?mode=h5')
 
-firstname = driver.find_element_by_id('u_jSx_4607')
+firstname = driver.find_element_by_id('u_LY9_60857')
 firstname.clear()
 firstname.send_keys('Jose Luis')
 
-lastname = driver.find_element_by_id('u_jSx_338354')
+lastname = driver.find_element_by_id('u_LY9_60858')
 lastname.clear()
 lastname.send_keys('Gutierrez')
 
-email = driver.find_element_by_id('u_jSx_4608')
+email = driver.find_element_by_id('u_LY9_60859')
 email.clear()
 email.send_keys('jgutz@gmail.com')
 
-dropdown = driver.find_element_by_id("u_jSx_338367")
-dropdown = Select(dropdown)
-dropdown.select_by_value("Sales Inquiry")
+address = driver.find_element_by_id('u_LY9_60860')
+address.clear()
+address.send_keys('123 Street')
 
-inquiry = driver.find_element_by_id('u_jSx_4609')
-inquiry.clear()
-inquiry.send_keys('Inquiry Test')
+country = Select(driver.find_element_by_id('u_LY9_60871'))
+country.select_by_visible_text('Mexico')
 
-siguiente = driver.find_element_by_name('submit')
-siguiente.click()
+date = driver.find_element_by_id('u_LY9_60861')
+date.clear()
+date.send_keys('12/12/2021')
 
-out_name = driver.find_element_by_xpath('/html/body/div/table/tbody/tr[1]/td')
+room_type = driver.find_element_by_id('u_LY9_60866_1')
+room_type.click()
+
+nights = driver.find_element_by_id('u_LY9_60870')
+nights.clear()
+nights.send_keys('2')
+
+submit = driver.find_element_by_name('submit')
+submit.click()
+
+forms_fields = ['Jose Luis', 'Gutierrez', 'jgutz@gmail.com','123 Street','Mexico', '12/12/2021']
+out_name = driver.find_elements_by_
 out_lastname = driver.find_element_by_xpath('/html/body/div/table/tbody/tr[2]/td')
 out_email = driver.find_element_by_xpath('/html/body/div/table/tbody/tr[3]/td')
 out_inquiry = driver.find_element_by_xpath('/html/body/div/table/tbody/tr[5]/td')
 out_subject_inquiry = driver.find_element_by_xpath('/html/body/div/table/tbody/tr[4]/td')
-
-forms_fields = ['Jose', 'Gutierrez', 'jgutz@gmail.com', 'Test', 'Sales Inquiry']
 
 for fields in forms_fields:
     if fields in out_name.text:
@@ -50,4 +59,4 @@ for fields in forms_fields:
     else:
         print('Form is not matching')
 
-driver.quit()
+#driver.quit()
