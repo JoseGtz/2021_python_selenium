@@ -12,3 +12,12 @@ def test_inventory():
     login(wait, 'standard_user', 'secret_sauce')
     items = get_inventory(wait)
     assert len(items) > 0, 'Inventory should be loaded'
+
+
+def test_catalog():
+    driver = get_driver('chrome')
+    wait = WebDriverWait(driver, 5)
+    driver.get('https://www.saucedemo.com/')
+    login(wait, 'standard_user', 'secret_sauce')
+    items = get_inventory(wait)
+    assert items[0].title == 'Sauce Labs Backpack'
