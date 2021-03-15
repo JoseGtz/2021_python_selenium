@@ -13,6 +13,8 @@ LOGIN_DATA = [
 ]
 
 
+@pytest.mark.sanity
+@pytest.mark.login
 @pytest.mark.parametrize('user, password', LOGIN_DATA)
 def test_valid_user(user, password):
     driver = get_driver('chrome')
