@@ -12,6 +12,7 @@ LOGIN_DATA = [
 
 
 ERROR_MSG = 'Epic sadface: Username and password do not match any user in this service'
+USER_RQR = 'Epic sadface: Username is required'
 
 
 class TestLogin(TestBase):
@@ -33,3 +34,14 @@ class TestLogin(TestBase):
         error_msg = page.get_error_message()
         assert error_msg is not None, 'Error message should be displayed for invalid login'
         assert error_msg == ERROR_MSG, f'Error message should be {ERROR_MSG}'
+
+    @pytest.mark.regression
+    @pytest.mark.login
+    def test_no_user(self):
+        page = LoginPage(self.driver)
+        page.open()
+        page.login('', '')
+        error_msg = page.get_error_message()
+        assert error_msg is not None, 'Error message should be displayed for invalid login'
+        assert error_msg == USER_RQR, f'Error message should be {USER_RQR}'
+

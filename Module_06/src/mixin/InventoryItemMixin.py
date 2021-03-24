@@ -5,7 +5,6 @@ class InventoryItemMixin:
     """Inventory item mixin"""
 
     __ADDED_LABEL = 'ADD TO CART'
-
     __REMOVE_LABEL = 'REMOVE'
 
     def get_title(self) -> str:

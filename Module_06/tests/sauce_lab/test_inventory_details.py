@@ -11,7 +11,7 @@ _DEF_PASSWORD = 'secret_sauce'
 
 class TestInventoryDetails(TestBase):
 
-    def test_inventory_details(self):
+    def test_inventory_details_view(self):
         """Test inventory prices"""
         login = LoginPage(self.driver)
         login.open()
@@ -22,8 +22,28 @@ class TestInventoryDetails(TestBase):
         print(f'Title: {details_page.get_title()}')
         print(f'Description: {details_page.get_description()}')
         print(f'Price: {details_page.get_price()}')
+
+    def test_inventory_details_add_remove(self):
+        """Test inventory prices"""
+        login = LoginPage(self.driver)
+        login.open()
+        inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
+        first_item = inventory_page.products[0]
+        first_item: InventoryItem
+        details_page = first_item.open_details()
         details_page.add_to_cart()
         print(f'Total elements in cart: {details_page.header.get_total_cart_items()}')
+        details_page.remove_from_cart()
+
+    def test_inventory_details_back(self):
+        """Test inventory prices"""
+        login = LoginPage(self.driver)
+        login.open()
+        inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
+        first_item = inventory_page.products[0]
+        first_item: InventoryItem
+        details_page = first_item.open_details()
+        details_page.add_to_cart()
         details_page.remove_from_cart()
         details_page.back()
         inventory_page.products.reload()
