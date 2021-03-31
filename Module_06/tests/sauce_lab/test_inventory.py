@@ -1,9 +1,10 @@
 """Test cases for inventory item"""
+import pytest
+
 from Module_06.src.elements.inventory_item import InventoryItem
 from Module_06.src.pages.inventory import InventorySortOptions
 from Module_06.src.pages.login import LoginPage
 from Module_06.tests.common.test_base import TestBase
-
 
 _DEF_USER = 'standard_user'
 _DEF_PASSWORD = 'secret_sauce'
@@ -51,8 +52,8 @@ class TestInventory(TestBase):
         inventory = login.login(_DEF_USER, _DEF_PASSWORD)
         assert inventory.get_label() == 'Products', 'Inventory page label should be Products'
 
-    def test_sort_alphabet(self):
-        """Test sort products by alphabet"""
+    def test_sort(self):
+        """Test sort products"""
         login = LoginPage(self.driver)
         login.open()
         inventory = login.login(_DEF_USER, _DEF_PASSWORD)
@@ -61,12 +62,13 @@ class TestInventory(TestBase):
             inventory.sort_by(option)
             inventory.get_sort_value() == option.value, f'Default sort should be {option.value}'
 
-    def test_sort_price(self):
-        """Test sort products by price"""
+    def test_add_remove(self):
+        """Test sort products"""
         login = LoginPage(self.driver)
         login.open()
         inventory = login.login(_DEF_USER, _DEF_PASSWORD)
-        inventory.get_sort_value() == InventorySortOptions.PRICE_LOW_TO_HIGH.value, 'Default sort should be Low to High'
-        for option in InventorySortOptions:
-            inventory.sort_by(option)
-            inventory.get_sort_value() == option.value, f'Default sort should be {option.value}'
+        first_item = inventory.products[0]
+        first_item: InventoryItem
+        first_item.add_to_cart()
+        print(f'Total elements in cart: {inventory.header.get_total_cart_items()}')
+        first_item.remove_from_cart()
