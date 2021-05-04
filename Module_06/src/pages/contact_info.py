@@ -14,7 +14,7 @@ class ContactInfoPage(BasePage):
         self._contact_info = ContactInfo(self._wait)
         self.header = Header(self._wait)
 
-    def fill_info(self, firstname="", lastname="", postal_code=""):
+    def info(self, firstname="", lastname="", postal_code=""):
         self._contact_info.fill_info(firstname, lastname, postal_code)
 
     def checkout(self):

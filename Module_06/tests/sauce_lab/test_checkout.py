@@ -20,7 +20,7 @@ class TestCheckout(TestBase):
             item.add_to_cart()
         cart_page = inventory.open_cart()
         contact_info_page = cart_page.checkout()
-        contact_info_page.fill_info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
+        contact_info_page.info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
         checkout_page = contact_info_page.checkout()
         assert checkout_page.get_title_text() == 'CHECKOUT: OVERVIEW', 'Checkout page title should be CHECKOUT: OVERVIEW'
 
@@ -35,7 +35,7 @@ class TestCheckout(TestBase):
             item.add_to_cart()
         cart_page = inventory.open_cart()
         contact_info_page = cart_page.checkout()
-        contact_info_page.fill_info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
+        contact_info_page.info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
         checkout_page = contact_info_page.checkout()
         checkout_page.cancel_buy()
         assert inventory.get_label() == 'PRODUCTS', 'Inventory page label should be Products'
@@ -51,7 +51,7 @@ class TestCheckout(TestBase):
             item.add_to_cart()
         cart_page = inventory.open_cart()
         contact_info_page = cart_page.checkout()
-        contact_info_page.fill_info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
+        contact_info_page.info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
         checkout_page = contact_info_page.checkout()
         checkout_page.finish_buy()
         assert checkout_page.get_success_msg() == 'THANK YOU FOR YOUR ORDER', 'Success page label should be THANK YOU FOR YOUR ORDER'

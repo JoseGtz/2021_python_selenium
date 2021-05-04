@@ -19,7 +19,7 @@ class TestContactInfo(TestBase):
             item.add_to_cart()
         cart_page = inventory.open_cart()
         contact_info_page = cart_page.checkout()
-        contact_info_page.fill_info(firstname="Jose Luis")
+        contact_info_page.info(firstname="Jose Luis")
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: Last Name is required"
 
@@ -34,7 +34,7 @@ class TestContactInfo(TestBase):
             item.add_to_cart()
         cart_page = inventory.open_cart()
         contact_info_page = cart_page.checkout()
-        contact_info_page.fill_info(lastname="Gutierrez")
+        contact_info_page.info(lastname="Gutierrez")
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: First Name is required"
 
@@ -49,7 +49,7 @@ class TestContactInfo(TestBase):
             item.add_to_cart()
         cart_page = inventory.open_cart()
         contact_info_page = cart_page.checkout()
-        contact_info_page.fill_info(firstname="Jose Luis", lastname="Gutierrez")
+        contact_info_page.info(firstname="Jose Luis", lastname="Gutierrez")
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: Postal Code is required"
 
@@ -64,6 +64,6 @@ class TestContactInfo(TestBase):
             item.add_to_cart()
         cart_page = inventory.open_cart()
         contact_info_page = cart_page.checkout()
-        contact_info_page.fill_info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
+        contact_info_page.info(firstname="Jose Luis", lastname="Gutierrez", postal_code="555555")
         contact_info_page.back_to_cart()
         assert cart_page.get_title() == 'YOUR CART', 'Cart page label should be "YOUR CART"'
