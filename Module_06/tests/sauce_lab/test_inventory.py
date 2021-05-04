@@ -1,4 +1,6 @@
 """Test cases for inventory item"""
+import pytest
+
 from Module_06.src.elements.inventory_item import InventoryItem
 from Module_06.src.pages.inventory import InventorySortOptions
 from Module_06.src.pages.login import LoginPage
@@ -18,7 +20,8 @@ TITLE_DATA = [
 
 
 class TestInventory(TestBase):
-
+    @pytest.mark.regression
+    @pytest.mark.inventory
     def test_prices(self):
         """Test inventory prices"""
         login = LoginPage(self.driver)
@@ -33,6 +36,8 @@ class TestInventory(TestBase):
             print(item.get_price())
             print('*' * 80)
 
+    @pytest.mark.regression
+    @pytest.mark.inventory
     def test_items_name(self):
         """Test inventory names"""
         login = LoginPage(self.driver)
@@ -43,6 +48,8 @@ class TestInventory(TestBase):
             assert item.get_title() == TITLE_DATA[index], f'Title for item {index} should be {TITLE_DATA[index]}'
             print('\n')
 
+    @pytest.mark.regression
+    @pytest.mark.inventory
     def test_label(self):
         """Test production label."""
         login = LoginPage(self.driver)
@@ -50,6 +57,8 @@ class TestInventory(TestBase):
         inventory = login.login(_DEF_USER, _DEF_PASSWORD)
         assert inventory.get_label() == 'Products', 'Inventory page label should be Products'
 
+    @pytest.mark.regression
+    @pytest.mark.inventory
     def test_sort(self):
         """Test sort products"""
         login = LoginPage(self.driver)
@@ -60,6 +69,8 @@ class TestInventory(TestBase):
             inventory.sort_by(option)
             inventory.get_sort_value() == option.value, f'Default sort should be {option.value}'
 
+    @pytest.mark.regression
+    @pytest.mark.inventory
     def test_add_remove(self):
         """This is to test items functionality on catalog"""
         login = LoginPage(self.driver)

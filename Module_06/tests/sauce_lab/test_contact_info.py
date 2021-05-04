@@ -1,3 +1,5 @@
+import pytest
+
 from Module_06.src.pages.login import LoginPage
 from Module_06.tests.common.test_base import TestBase
 
@@ -6,7 +8,8 @@ _DEF_PASSWORD = 'secret_sauce'
 
 
 class TestContactInfo(TestBase):
-
+    @pytest.mark.regression
+    @pytest.mark.contact_info
     def test_contact_info_incomplete_LastName(self):
         login = LoginPage(self.driver)
         login.open()
@@ -19,6 +22,8 @@ class TestContactInfo(TestBase):
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: Last Name is required"
 
+    @pytest.mark.regression
+    @pytest.mark.contact_info
     def test_contact_info_incomplete_FirstName(self):
         login = LoginPage(self.driver)
         login.open()
@@ -31,6 +36,8 @@ class TestContactInfo(TestBase):
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: First Name is required"
 
+    @pytest.mark.regression
+    @pytest.mark.contact_info
     def test_contact_info_incomplete_PostalCode(self):
         login = LoginPage(self.driver)
         login.open()
@@ -43,6 +50,8 @@ class TestContactInfo(TestBase):
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: Postal Code is required"
 
+    @pytest.mark.regression
+    @pytest.mark.contact_info
     def test_navigation_back(self):
         login = LoginPage(self.driver)
         login.open()

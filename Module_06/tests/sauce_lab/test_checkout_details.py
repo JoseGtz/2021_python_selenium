@@ -1,4 +1,6 @@
 """Test cases for inventory item"""
+import pytest
+
 from Module_06.src.elements.inventory_item import InventoryItem
 from Module_06.src.pages.login import LoginPage
 from Module_06.tests.common.test_base import TestBase
@@ -11,6 +13,8 @@ _DEF_PASSWORD = 'secret_sauce'
 
 class TestCheckoutDetails(TestBase):
 
+    @pytest.mark.regression
+    @pytest.mark.checkout_details
     def test_checkout_details(self):
         """Test inventory prices"""
         login = LoginPage(self.driver)
@@ -25,6 +29,8 @@ class TestCheckoutDetails(TestBase):
         inventory.products.reload()
         print(f'Total elements in cart: {inventory.header.get_total_cart_items()}')
 
+    @pytest.mark.regression
+    @pytest.mark.checkout_details
     def test_checkout_information(self):
         """Test inventory prices"""
         login = LoginPage(self.driver)
@@ -40,6 +46,8 @@ class TestCheckoutDetails(TestBase):
         checkout_page.cancel_checkout()
         print("Checkout Canceled")
 
+    @pytest.mark.regression
+    @pytest.mark.checkout_details
     def test_checkout_remove(self):
         """Test inventory prices"""
         login = LoginPage(self.driver)

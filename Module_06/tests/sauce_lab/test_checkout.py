@@ -1,3 +1,5 @@
+import pytest
+
 from Module_06.src.pages.login import LoginPage
 from Module_06.tests.common.test_base import TestBase
 
@@ -8,6 +10,8 @@ VALID_PRICES = ['$29.99', '$9.99', '$15.99', '$49.99', '$7.99', '$15.99']
 
 class TestCheckout(TestBase):
 
+    @pytest.mark.regression
+    @pytest.mark.checkout
     def test_checkout_page(self):
         login = LoginPage(self.driver)
         login.open()
@@ -20,6 +24,8 @@ class TestCheckout(TestBase):
         checkout_page = contact_info_page.checkout()
         assert checkout_page.get_title_text() == 'CHECKOUT: OVERVIEW', 'Checkout page title should be CHECKOUT: OVERVIEW'
 
+    @pytest.mark.regression
+    @pytest.mark.checkout
     def test_checkout_cancel(self):
         login = LoginPage(self.driver)
         login.open()
@@ -33,6 +39,8 @@ class TestCheckout(TestBase):
         checkout_page.cancel_buy()
         assert inventory.get_label() == 'PRODUCTS', 'Inventory page label should be Products'
 
+    @pytest.mark.regression
+    @pytest.mark.checkout
     def test_checkout_complete(self):
         login = LoginPage(self.driver)
         login.open()

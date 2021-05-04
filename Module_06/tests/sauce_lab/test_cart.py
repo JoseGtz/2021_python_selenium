@@ -1,3 +1,5 @@
+import pytest
+
 from Module_06.src.pages.login import LoginPage
 from Module_06.tests.common.test_base import TestBase
 
@@ -7,6 +9,8 @@ _DEF_PASSWORD = 'secret_sauce'
 
 class TestCart(TestBase):
 
+    @pytest.mark.regression
+    @pytest.mark.cart
     def test_cart(self):
         login = LoginPage(self.driver)
         login.open()
@@ -16,6 +20,8 @@ class TestCart(TestBase):
         cart_page.back_shopping()
         assert inventory.get_label() == 'PRODUCTS', 'Inventory page label should be Products'
 
+    @pytest.mark.regression
+    @pytest.mark.cart
     def test_added_items(self):
         login = LoginPage(self.driver)
         login.open()
