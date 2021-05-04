@@ -8,6 +8,7 @@ _DEF_PASSWORD = 'secret_sauce'
 
 
 class TestContactInfo(TestBase):
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.contact_info
     def test_contact_info_incomplete_LastName(self):
@@ -22,6 +23,7 @@ class TestContactInfo(TestBase):
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: Last Name is required"
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.contact_info
     def test_contact_info_incomplete_FirstName(self):
@@ -36,6 +38,7 @@ class TestContactInfo(TestBase):
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: First Name is required"
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.contact_info
     def test_contact_info_incomplete_PostalCode(self):
@@ -50,6 +53,7 @@ class TestContactInfo(TestBase):
         contact_info_page.checkout()
         assert contact_info_page.get_error_msg() == "Error: Postal Code is required"
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.contact_info
     def test_navigation_back(self):

@@ -20,6 +20,7 @@ TITLE_DATA = [
 
 
 class TestInventory(TestBase):
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.inventory
     def test_prices(self):
@@ -36,6 +37,7 @@ class TestInventory(TestBase):
             print(item.get_price())
             print('*' * 80)
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.inventory
     def test_items_name(self):
@@ -57,6 +59,7 @@ class TestInventory(TestBase):
         inventory = login.login(_DEF_USER, _DEF_PASSWORD)
         assert inventory.get_label() == 'Products', 'Inventory page label should be Products'
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.inventory
     def test_sort(self):

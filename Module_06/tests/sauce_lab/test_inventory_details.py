@@ -10,6 +10,7 @@ _DEF_PASSWORD = 'secret_sauce'
 
 
 class TestInventoryDetails(TestBase):
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.inventory_details
     def test_inventory_details_view(self):
@@ -24,6 +25,7 @@ class TestInventoryDetails(TestBase):
         print(f'Description: {details_page.get_description()}')
         print(f'Price: {details_page.get_price()}')
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.inventory_details
     def test_inventory_details_add_remove(self):

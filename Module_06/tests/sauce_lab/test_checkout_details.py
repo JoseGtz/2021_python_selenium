@@ -12,7 +12,7 @@ _DEF_PASSWORD = 'secret_sauce'
 
 
 class TestCheckoutDetails(TestBase):
-
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.checkout_details
     def test_checkout_details(self):

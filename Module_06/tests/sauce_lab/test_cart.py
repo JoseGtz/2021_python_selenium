@@ -8,7 +8,7 @@ _DEF_PASSWORD = 'secret_sauce'
 
 
 class TestCart(TestBase):
-
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.cart
     def test_cart(self):

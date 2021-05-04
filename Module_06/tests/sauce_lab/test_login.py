@@ -54,6 +54,7 @@ class TestLogin(TestBase):
         assert error_msg is not None, "locked message should be displayed for locked account"
         assert error_msg == LOCKED_MSG, f'Error Message should be {LOCKED_MSG}'
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.login
     def test_logout(self):

@@ -9,7 +9,7 @@ VALID_PRICES = ['$29.99', '$9.99', '$15.99', '$49.99', '$7.99', '$15.99']
 
 
 class TestCheckout(TestBase):
-
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.checkout
     def test_checkout_page(self):
@@ -24,6 +24,7 @@ class TestCheckout(TestBase):
         checkout_page = contact_info_page.checkout()
         assert checkout_page.get_title_text() == 'CHECKOUT: OVERVIEW', 'Checkout page title should be CHECKOUT: OVERVIEW'
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.checkout
     def test_checkout_cancel(self):
@@ -39,6 +40,7 @@ class TestCheckout(TestBase):
         checkout_page.cancel_buy()
         assert inventory.get_label() == 'PRODUCTS', 'Inventory page label should be Products'
 
+    @pytest.mark.sanity
     @pytest.mark.regression
     @pytest.mark.checkout
     def test_checkout_complete(self):
