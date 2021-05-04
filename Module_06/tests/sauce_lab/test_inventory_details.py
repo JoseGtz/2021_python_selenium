@@ -1,9 +1,7 @@
 """Test cases for inventory item"""
 from Module_06.src.elements.inventory_item import InventoryItem
-from Module_06.src.pages.inventory import InventorySortOptions
 from Module_06.src.pages.login import LoginPage
 from Module_06.tests.common.test_base import TestBase
-
 
 _DEF_USER = 'standard_user'
 _DEF_PASSWORD = 'secret_sauce'

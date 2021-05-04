@@ -6,12 +6,12 @@ from Module_06.src.locators.header import HeaderLoc
 
 class Header:
     """Represents inventory item."""
-
     def __init__(self, wait: WebDriverWait):
         self._wait = wait
         self._link = BasePageElement(HeaderLoc.LINK, wait=wait)
         self._badge = BasePageElement(HeaderLoc.BADGE, wait=wait)
         self._burger_btn = BasePageElement(HeaderLoc.BURGER_BTN, wait=wait)
+        self._logout_btn = BasePageElement(HeaderLoc.LOGOUT_BTN, wait=wait)
 
     def get_total_cart_items(self) -> int:
         """Get total items in cart"""
@@ -27,3 +27,7 @@ class Header:
     def open_menu(self):
         """Open menu"""
         self._burger_btn.click()
+
+    def logout(self):
+        """Logout Action"""
+        self._logout_btn.click()

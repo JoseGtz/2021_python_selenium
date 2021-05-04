@@ -1,9 +1,7 @@
 """Test cases for inventory item"""
 from Module_06.src.elements.inventory_item import InventoryItem
-from Module_06.src.elements.header import Header
 from Module_06.src.pages.login import LoginPage
 from Module_06.tests.common.test_base import TestBase
-from Module_06.src.elements.row_inventory_item import RowInventoryItem
 from Module_06.src.pages.checkout_details import CheckoutDetailsPage
 from Module_06.src.pages.checkout_information import CheckoutInformationPage
 

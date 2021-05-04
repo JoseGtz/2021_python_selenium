@@ -12,7 +12,7 @@ class InventoryItems:
         self.__elements = []
 
     def reload(self):
-        """Force reload of inventory items."""
+        """Force reload of inventory items, interaction between pages and have the list of products updated."""
         self.__elements.clear()
         elements = self._wait.until(EC.visibility_of_all_elements_located(self._loc))
         for element in elements:

@@ -1,11 +1,11 @@
-"""Base test class.
+"""Base tests class.
 PyTest Discovery: https://docs.pytest.org/en/stable/goodpractices.html#test-discovery
 """
 from common.webdriver_factory import get_driver
 
 
 class TestBase:
-    """Base test class"""
+    """Base tests class"""
 
     def setup_method(self):
         """Setup method"""

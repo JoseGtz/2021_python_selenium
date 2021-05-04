@@ -1,4 +1,3 @@
-"""Contains methods for base page object."""
 import logging
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -6,10 +5,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class BasePage:
     """Base page."""
+
     __MAX_TIMEOUT = 6000
+
     __MIN_TIMEOUT = 0
 
     """Base page for all page objects."""
+
     def __init__(self, driver: WebDriver, url: str = None, timeout: int = 10):
         self._driver = driver
         self._url = url
@@ -20,7 +22,7 @@ class BasePage:
         """Open page in browser."""
         self._driver.get(self._url)
 
-    def close(self) -> object:
+    def close(self):
         """Close browser window."""
         self._driver.close()
 

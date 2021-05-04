@@ -1,6 +1,4 @@
 """Test cases for inventory item"""
-import pytest
-
 from Module_06.src.elements.inventory_item import InventoryItem
 from Module_06.src.pages.inventory import InventorySortOptions
 from Module_06.src.pages.login import LoginPage
@@ -63,12 +61,10 @@ class TestInventory(TestBase):
             inventory.get_sort_value() == option.value, f'Default sort should be {option.value}'
 
     def test_add_remove(self):
-        """Test sort products"""
+        """This is to test items functionality on catalog"""
         login = LoginPage(self.driver)
         login.open()
-        inventory = login.login(_DEF_USER, _DEF_PASSWORD)
-        first_item = inventory.products[0]
-        first_item: InventoryItem
-        first_item.add_to_cart()
-        print(f'Total elements in cart: {inventory.header.get_total_cart_items()}')
-        first_item.remove_from_cart()
+        inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
+        for item in inventory_page.products:
+            item.add_to_cart()
+            item.remove_from_cart()

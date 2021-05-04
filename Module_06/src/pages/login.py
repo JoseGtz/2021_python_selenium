@@ -11,7 +11,6 @@ _URL = 'https://www.saucedemo.com/'
 
 class LoginPage(BasePage):
     """Sauce lab login."""
-
     def __init__(self, driver: WebDriver, timeout: int = 5):
         super().__init__(driver, _URL, timeout)
         self.__user = BasePageElement(LoginPageLoc.USER, wait=self._wait)
@@ -31,3 +30,6 @@ class LoginPage(BasePage):
         :return: Error message
         """
         return self.__error_msg.get_text()
+
+    def get_login_btn(self):
+        return self.__login

@@ -1,6 +1,6 @@
+
 """Implements sauce lab login inventory."""
 from enum import Enum
-
 from selenium.webdriver.remote.webdriver import WebDriver
 from Module_06.src.elements.base_page_element import BasePageElement
 from Module_06.src.elements.header import Header
@@ -8,7 +8,7 @@ from Module_06.src.elements.inventory_items import InventoryItems
 from Module_06.src.elements.select_element import SelectElement
 from Module_06.src.locators.inventory import InventoryPageLoc
 from Module_06.src.pages.base_page import BasePage
-
+from Module_06.src.pages.cart import CartPage
 
 _URL = 'https://www.saucedemo.com/inventory.html'
 
@@ -26,14 +26,18 @@ class InventoryPage(BasePage):
 
     def __init__(self, driver: WebDriver, timeout: int = 5):
         super().__init__(driver, _URL, timeout)
-        self.products = InventoryItems(InventoryPageLoc.ITEMS, self._wait)
         self.header = Header(self._wait)
+        self.products = InventoryItems(InventoryPageLoc.ITEMS, self._wait)
         self.__label = BasePageElement(InventoryPageLoc.LABEL, self._wait)
         self.__sort_dropdown = SelectElement(InventoryPageLoc.SORT_DROPDOWN, self._wait)
 
     def get_label(self) -> str:
         """Get page label."""
         return self.__label.get_text()
+
+    def open_cart(self):
+        self.header.goto_cart()
+        return CartPage(self._wait._driver, self._wait._timeout)
 
     def sort_by(self, option: InventorySortOptions):
         """Sort by specified value"""
@@ -42,3 +46,12 @@ class InventoryPage(BasePage):
     def get_sort_value(self) -> str:
         """Get select sort value."""
         return self.__sort_dropdown.get_selected_value()
+
+    def get_menu(self):
+        return self.header.open_menu()
+
+    def click_cart(self):
+        return self.header.goto_cart()
+
+    def logout(self):
+        return self.header.logout()
